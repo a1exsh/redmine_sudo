@@ -1,0 +1,3 @@
+= sudo
+
+A Redmine plugin to make admin users become super user before they can actually employ admin powers.

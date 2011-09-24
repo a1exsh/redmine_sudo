@@ -1,0 +1,5 @@
+# English strings go here for Rails i18n
+en:
+  become_superuser: Become superuser
+  giveup_superuser: Giveup superuser
+
