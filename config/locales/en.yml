@@ -2,4 +2,5 @@
 en:
   become_superuser: Become superuser
   giveup_superuser: Giveup superuser
-
+  notice_sudo_logged_in: Logged in as administrator
+  notice_sudo_logged_out: Logged out of administrator
