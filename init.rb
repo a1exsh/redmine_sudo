@@ -36,13 +36,13 @@ Redmine::Plugin.register :redmine_sudo do
   menu :account_menu, :become_superuser,
     { :controller => 'account', :action => 'login_sudo' },
     :before => :my_account,
-    :caption => :become_superuser,
+    :caption => :label_become_superuser,
     :if => Proc.new { User.current.has_sudo? && !User.current.sudo? }
 
   menu :account_menu, :giveup_superuser,
     { :controller => 'account', :action => 'logout_sudo' },
     :before => :my_account,
-    :caption => :giveup_superuser,
+    :caption => :label_giveup_superuser,
     :if => Proc.new { User.current.has_sudo? && User.current.sudo? }
 
   settings :default => { 'expires_in' => 15 },

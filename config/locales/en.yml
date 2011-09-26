@@ -1,7 +1,7 @@
 # English strings go here for Rails i18n
 en:
-  become_superuser: Become superuser
-  giveup_superuser: Giveup superuser
+  label_become_superuser: Become superuser
+  label_giveup_superuser: Giveup superuser
   notice_sudo_logged_in: Logged in as administrator.
   notice_sudo_logged_out: Logged out of administrator.
   warning_sudo_expired: Your administrator session has expired.

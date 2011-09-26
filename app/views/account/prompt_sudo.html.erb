@@ -1,0 +1,19 @@
+<div id="login-form">
+  <% form_tag({ :action => "login_sudo" }) do %>
+    <%= back_url_hidden_field_tag %>
+    <table>
+      <tr>
+        <td align="right"><label for="password"><%=l(:field_password)%>:</label></td>
+        <td align="left"><%= password_field_tag 'password', nil, :tabindex => '1' %></td>
+      </tr>
+      <tr>
+        <td align="left">
+        </td>
+        <td align="right">
+          <input type="submit" name="login" value="<%=l(:label_become_superuser)%> &#187;" tabindex="2"/>
+        </td>
+      </tr>
+    </table>
+    <%= javascript_tag "Form.Element.focus('password');" %>
+  <% end %>
+</div>
