@@ -8,6 +8,7 @@ module RedmineSudo
 
     def plugin_with_sudo
       if request.post? && params[:id] == 'redmine_sudo'
+        params[:settings][:prompt] = (params[:settings][:prompt] == '1')
         params[:settings][:expires_in] = [0, params[:settings][:expires_in].to_i].max
       end
       plugin_without_sudo

@@ -1,7 +1,16 @@
-<% expires_in = settings['expires_in'] %>
+<fieldset>
+<legend><%=l :label_settings_sudo_password_prompt %></legend>
+<p>
+  <%= label_tag :settings_sudo_prompt, l(:label_settings_sudo_prompt) %>
+  <%= hidden_field_tag 'settings[prompt]', '0', :id => nil %>
+  <%= check_box_tag 'settings[prompt]', '1', settings['prompt'],
+      :id => :settings_sudo_prompt %>
+</p>
+</fieldset>
 
 <fieldset>
 <legend><%=l :label_settings_sudo_expiration %></legend>
+<% expires_in = settings['expires_in'] %>
 <p>
   <%= label_tag :settings_sudo_expires, l(:label_settings_sudo_expires) %>
   <%= check_box_tag '', '1', expires_in > 0,

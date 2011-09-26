@@ -8,13 +8,18 @@ module RedmineSudo
     end
 
     def prompt_sudo
-      redirect_to :back if User.current.sudo?
+      if User.current.sudo?
+        redirect_to :back
+      elsif !sudo_settings['prompt']
+        login_sudo
+      end
     rescue ActionController::RedirectBackError
       redirect_to home_path
     end
 
     def login_sudo
-      unless User.try_to_login(User.current.login, params[:password])
+      if sudo_settings['prompt'] && !User.try_to_login(User.current.login,
+                                                       params[:password])
         flash.now[:error] = l(:notice_account_invalid_creditentials)
         render :prompt_sudo
         return
@@ -22,12 +27,18 @@ module RedmineSudo
       
       User.current.sudo = session[:sudo] = true
 
-      expires_in = Setting['plugin_redmine_sudo']['expires_in']
+      expires_in = sudo_settings['expires_in']
       expires_in = expires_in > 0 ? expires_in.minutes : 1.year
       session[:sudo_expires] = Time.now + expires_in
 
       flash[:notice] = l(:notice_sudo_logged_in)
-      redirect_back_or_default home_path
+      if sudo_settings['prompt']
+        redirect_back_or_default home_path
+      else
+        redirect_to :back
+      end
+    rescue ActionController::RedirectBackError
+      redirect_to home_path
     end
 
     def logout_sudo
@@ -46,6 +57,10 @@ module RedmineSudo
 
     def require_user_has_sudo
       deny_access unless User.current.has_sudo?
+    end
+
+    def sudo_settings
+      Setting['plugin_redmine_sudo']
     end
   end
 end

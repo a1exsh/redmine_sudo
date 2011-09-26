@@ -45,6 +45,6 @@ Redmine::Plugin.register :redmine_sudo do
     :caption => :label_giveup_superuser,
     :if => Proc.new { User.current.has_sudo? && User.current.sudo? }
 
-  settings :default => { 'expires_in' => 15 },
+  settings :default => { 'prompt' => true, 'expires_in' => 15 },
     :partial => 'settings/redmine_sudo_settings'
 end

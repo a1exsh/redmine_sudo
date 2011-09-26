@@ -8,3 +8,5 @@ en:
   label_settings_sudo_expiration: Sudo expiration
   label_settings_sudo_expires: Expires
   label_settings_sudo_expires_in: Expires in (minutes)
+  label_settings_sudo_password_prompt: Password prompt
+  label_settings_sudo_prompt: Prompt for password
