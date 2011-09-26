@@ -1,0 +1,18 @@
+<% expires_in = settings['expires_in'] %>
+
+<fieldset>
+<legend><%=l :label_settings_sudo_expiration %></legend>
+<p>
+  <%= label_tag :settings_sudo_expires, l(:label_settings_sudo_expires) %>
+  <%= check_box_tag '', '1', expires_in > 0,
+      :id => :settings_sudo_expires,
+      :onclick => "if (this.checked) { Form.Element.enable('settings_sudo_expires_in'); } else { Form.Element.disable('settings_sudo_expires_in'); }" %>
+</p>
+
+<p>
+  <%= label_tag :settings_sudo_expires_in, l(:label_settings_sudo_expires_in) %>
+  <%= text_field_tag 'settings[expires_in]', expires_in > 0 ? expires_in : '',
+      :id => :settings_sudo_expires_in, :size => 5,
+      :disabled => (expires_in == 0) %>
+</p>
+</fieldset>

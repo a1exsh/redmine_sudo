@@ -6,6 +6,7 @@ Dispatcher.to_prepare :redmine_sudo do
   require_dependency 'user'
   require_dependency 'application_controller'
   require_dependency 'account_controller'
+  require_dependency 'settings_controller'
 
   unless User.included_modules.include? RedmineSudo::UserPatch
     User.send(:include, RedmineSudo::UserPatch)
@@ -17,6 +18,10 @@ Dispatcher.to_prepare :redmine_sudo do
 
   unless AccountController.included_modules.include? RedmineSudo::AccountControllerPatch
     AccountController.send(:include, RedmineSudo::AccountControllerPatch)
+  end
+
+  unless SettingsController.included_modules.include? RedmineSudo::SettingsControllerPatch
+    SettingsController.send(:include, RedmineSudo::SettingsControllerPatch)
   end
 end
 
@@ -39,4 +44,7 @@ Redmine::Plugin.register :redmine_sudo do
     :before => :my_account,
     :caption => :giveup_superuser,
     :if => Proc.new { User.current.has_sudo? && User.current.sudo? }
+
+  settings :default => { 'expires_in' => 15 },
+    :partial => 'settings/redmine_sudo_settings'
 end

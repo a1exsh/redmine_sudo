@@ -2,5 +2,9 @@
 en:
   become_superuser: Become superuser
   giveup_superuser: Giveup superuser
-  notice_sudo_logged_in: Logged in as administrator
-  notice_sudo_logged_out: Logged out of administrator
+  notice_sudo_logged_in: Logged in as administrator.
+  notice_sudo_logged_out: Logged out of administrator.
+  warning_sudo_expired: Your administrator session has expired.
+  label_settings_sudo_expiration: Sudo expiration
+  label_settings_sudo_expires: Expires
+  label_settings_sudo_expires_in: Expires in (minutes)
