@@ -1,3 +1,12 @@
-= sudo
+= Redmine sudo plugin
 
-A Redmine plugin to make admin users become super user before they can actually employ admin powers.
+A Redmine plugin to make admin users become super user before they can
+actually employ admin powers.
+
+This adds a 'Become superuser' link to the accout menu, if current
+user is an admin.  The user must click this link and enter his
+password on the page shown next to actually become superuser.  When
+superuser permissions are no longer required, the user may click
+'Giveup superuser' link.
+
+Superuser sessions expire automatically in 15 minutes (configurable.)
